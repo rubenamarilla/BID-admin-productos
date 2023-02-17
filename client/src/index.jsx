@@ -1,13 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from './views/Main';
 import Details from './views/Details';
 import ErrorPage from './views/errorPage';
+import Update from './views/Update';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +16,11 @@ const router = createBrowserRouter([
   {
     path: "/:id",
     element: <Details />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "update/:id",
+    element: <Update />,
     errorElement: <ErrorPage />
   }
 ]);

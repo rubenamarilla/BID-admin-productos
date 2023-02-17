@@ -4,8 +4,6 @@ import { Product } from '../components/Product'
 import ProductList from '../components/ProductList';
 import "./Main.css"
 
-
-
 const Main = () => {
     const [products, setProducts] = useState([]);
     const [loaded, setLoaded] = useState(false);
@@ -19,12 +17,18 @@ const Main = () => {
         })
         .catch((error) => console.log(error));
     }, [])
+
+    const removeFromDom = productId => {
+        setProducts(products.filter(product => product._id !== productId));
+    }
+
     return (
         <div className='Main'>
             <Product />
             <hr/>
-            {loaded && <ProductList products={products}/>}
+            {loaded && <ProductList products={products} removeFromDom={removeFromDom}/>}
         </div>
     )
 }
+
 export default Main;

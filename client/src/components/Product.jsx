@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 export const Product = () => {
@@ -8,27 +8,29 @@ export const Product = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:8000/api/product/new", {
-            title,
-            price,
-            description
-        })
-        .then(response=>console.log(response))
-        .catch(error=>console.log(error))
-    }
+        axios
+            .post("http://localhost:8000/api/product", {
+                title,
+                price,
+                description,
+            })
+            .then((response) => console.log(response))
+            .catch((error) => console.log(error));
+
+    };
     return (
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="title">Title</label>
-                <input type="text" onChange={e=>setTitle(e.target.value)}/>
+                <input type="text" onChange={(e) => setTitle(e.target.value)} />
             </div>
             <div>
                 <label htmlFor="price">Price</label>
-                <input type="text" onChange={e=>setPrice(e.target.value)}/>
+                <input type="text" onChange={(e) => setPrice(e.target.value)} />
             </div>
             <div>
                 <label htmlFor="description">Description</label>
-                <input type="text" onChange={e=>setDescription(e.target.value)}/>
+                <input type="text" onChange={(e) => setDescription(e.target.value)} />
             </div>
             <button type="submit">Guardar</button>
         </form>
